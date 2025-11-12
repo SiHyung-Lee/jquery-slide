@@ -5,6 +5,10 @@
 
 무한 루프와 자동 재생 기능을 갖춘 모던 바닐라 JavaScript 캐러셀 슬라이더입니다.
 
+## 🎬 라이브 데모
+
+**[👉 데모 보기](https://jquery-slide-gamma.vercel.app)**
+
 ## ✨ 주요 기능
 
 - 🎯 **순수 바닐라 JavaScript** - jQuery 의존성 제거
