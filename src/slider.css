@@ -1,0 +1,194 @@
+/**
+ * jQuery Slide - Modern CSS with transform/transition
+ * Performance optimized using CSS transforms instead of position animations
+ */
+
+/* 슬라이더 컨테이너 */
+.js-slide-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+/* 슬라이드 아이템 */
+.js-slide-container > * {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* GPU 가속을 위한 will-change */
+  will-change: transform;
+  /* 하드웨어 가속 활성화 */
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* 슬라이드 카운터/인디케이터 */
+.slide-counter {
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 10;
+}
+
+.slide-count {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  padding: 0;
+  margin-left: 2px;
+  background-color: #fff;
+  border: none;
+  border-radius: 50%;
+  text-indent: -9999px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.slide-count:hover {
+  transform: scale(1.2);
+}
+
+.slide-count.active {
+  background-color: #01a3ec;
+}
+
+.slide-count:focus {
+  outline: 2px solid #01a3ec;
+  outline-offset: 2px;
+}
+
+/* 이전/다음 버튼 */
+.slide-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.8);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 16px;
+  border-radius: 50%;
+  text-indent: -9999px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  z-index: 10;
+}
+
+.slide-button:hover {
+  background-color: rgba(255, 255, 255, 1);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.slide-button:focus {
+  outline: 2px solid #01a3ec;
+  outline-offset: 2px;
+}
+
+.slide-button:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+.slide-prev,
+.js-slide-prev {
+  left: 10px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23333'%3E%3Cpath d='M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z'/%3E%3C/svg%3E");
+}
+
+.slide-next,
+.js-slide-next {
+  right: 10px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23333'%3E%3Cpath d='M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z'/%3E%3C/svg%3E");
+}
+
+/* Featured Service 예제 스타일 */
+.featured-service {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  min-height: 200px;
+  padding: 2rem 1rem;
+  background: linear-gradient(135deg, rgba(31, 33, 35, 0.95), rgba(31, 33, 35, 0.85));
+  border-top: 1px solid #4b4e4f;
+  border-bottom: 1px solid #6f7375;
+}
+
+.featured-title {
+  margin: 0 0 1.5rem 0;
+  font-size: 1.7rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.featured-service .slide-counter {
+  top: 2rem;
+  right: 1rem;
+}
+
+.featured-service-wrap {
+  width: 100%;
+  padding: 0 1rem;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+  .featured-title {
+    font-size: 1.4rem;
+  }
+
+  .slide-button {
+    width: 32px;
+    height: 32px;
+    background-size: 12px;
+  }
+
+  .slide-count {
+    width: 8px;
+    height: 8px;
+  }
+}
+
+/* 접근성: 화면 리더 전용 텍스트 */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* 애니메이션 비활성화 사용자를 위한 미디어 쿼리 */
+@media (prefers-reduced-motion: reduce) {
+  .js-slide-container > *,
+  .slide-count,
+  .slide-button {
+    transition: none !important;
+  }
+}
+
+/* 다크 모드 지원 */
+@media (prefers-color-scheme: dark) {
+  .slide-count {
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+
+  .slide-count.active {
+    background-color: #01a3ec;
+  }
+
+  .slide-button {
+    background-color: rgba(255, 255, 255, 0.9);
+  }
+}

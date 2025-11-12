@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery Slide - Modern Vanilla JavaScript Carousel</title>
+    <link rel="stylesheet" href="../src/slider.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: white;
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .demo-section {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .demo-section h2 {
+            margin-bottom: 1.5rem;
+            color: #333;
+            font-size: 1.5rem;
+        }
+
+        .demo-slider {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            min-height: 300px;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+            background: linear-gradient(135deg, rgba(31, 33, 35, 0.95), rgba(31, 33, 35, 0.85));
+            border: 1px solid #4b4e4f;
+        }
+
+        .slide-item {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 3rem 2rem;
+            text-align: center;
+            min-height: 300px;
+        }
+
+        .slide-item h3 {
+            color: white;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .slide-item p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.1rem;
+            max-width: 600px;
+        }
+
+        .slide-item.slide-1 { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .slide-item.slide-2 { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+        .slide-item.slide-3 { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+        .slide-item.slide-4 { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 6px;
+            background: #667eea;
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .btn:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .info {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 6px;
+            margin-top: 1rem;
+            color: #666;
+        }
+
+        .info code {
+            background: #e9ecef;
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+
+        footer {
+            text-align: center;
+            color: white;
+            margin-top: 3rem;
+            padding: 2rem;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+            transition: border-color 0.3s ease;
+        }
+
+        footer a:hover {
+            border-bottom-color: white;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .slide-item h3 {
+                font-size: 1.5rem;
+            }
+
+            .slide-item p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>jQuery Slide v2.0</h1>
+
+        <!-- 데모 1: 기본 슬라이더 -->
+        <div class="demo-section">
+            <h2>기본 슬라이더 (자동 재생)</h2>
+            <div class="demo-slider js-slider-1">
+                <ul class="js-slide-container">
+                    <li class="slide-item slide-1">
+                        <h3>슬라이드 1</h3>
+                        <p>무한 루프와 자동 재생 기능을 갖춘 모던 바닐라 JavaScript 캐러셀 슬라이더</p>
+                    </li>
+                    <li class="slide-item slide-2">
+                        <h3>슬라이드 2</h3>
+                        <p>CSS Transform을 활용한 GPU 가속 애니메이션으로 부드러운 전환 효과</p>
+                    </li>
+                    <li class="slide-item slide-3">
+                        <h3>슬라이드 3</h3>
+                        <p>터치 스와이프 지원으로 모바일에서도 편리하게 사용</p>
+                    </li>
+                    <li class="slide-item slide-4">
+                        <h3>슬라이드 4</h3>
+                        <p>접근성을 고려한 ARIA 속성 및 키보드 네비게이션 지원</p>
+                    </li>
+                </ul>
+
+                <span class="slide-counter js-slide-counter">
+                    <button class="slide-count active" type="button">
+                        <span class="sr-only">첫번째 슬라이드</span>
+                    </button>
+                    <button class="slide-count" type="button">
+                        <span class="sr-only">두번째 슬라이드</span>
+                    </button>
+                    <button class="slide-count" type="button">
+                        <span class="sr-only">세번째 슬라이드</span>
+                    </button>
+                    <button class="slide-count" type="button">
+                        <span class="sr-only">네번째 슬라이드</span>
+                    </button>
+                </span>
+
+                <span>
+                    <button class="slide-prev slide-button js-slide-prev" type="button">
+                        <span class="sr-only">이전</span>
+                    </button>
+                    <button class="slide-next slide-button js-slide-next" type="button">
+                        <span class="sr-only">다음</span>
+                    </button>
+                </span>
+            </div>
+
+            <div class="info">
+                <strong>설정:</strong>
+                <code>autoplay: true</code>,
+                <code>delay: 3000ms</code>,
+                <code>speed: 500ms</code>
+            </div>
+        </div>
+
+        <!-- 데모 2: 수동 제어 슬라이더 -->
+        <div class="demo-section">
+            <h2>수동 제어 슬라이더</h2>
+            <div class="demo-slider js-slider-2">
+                <ul class="js-slide-container">
+                    <li class="slide-item slide-1">
+                        <h3>수동 제어 모드</h3>
+                        <p>자동 재생이 비활성화된 슬라이더입니다</p>
+                    </li>
+                    <li class="slide-item slide-2">
+                        <h3>버튼으로 제어</h3>
+                        <p>이전/다음 버튼이나 하단의 컨트롤을 사용하세요</p>
+                    </li>
+                    <li class="slide-item slide-3">
+                        <h3>스와이프 지원</h3>
+                        <p>모바일에서는 좌우로 스와이프하여 이동할 수 있습니다</p>
+                    </li>
+                </ul>
+
+                <span class="slide-counter js-slide-counter">
+                    <button class="slide-count active" type="button">
+                        <span class="sr-only">첫번째 슬라이드</span>
+                    </button>
+                    <button class="slide-count" type="button">
+                        <span class="sr-only">두번째 슬라이드</span>
+                    </button>
+                    <button class="slide-count" type="button">
+                        <span class="sr-only">세번째 슬라이드</span>
+                    </button>
+                </span>
+
+                <span>
+                    <button class="slide-prev slide-button js-slide-prev" type="button">
+                        <span class="sr-only">이전</span>
+                    </button>
+                    <button class="slide-next slide-button js-slide-next" type="button">
+                        <span class="sr-only">다음</span>
+                    </button>
+                </span>
+            </div>
+
+            <div class="controls">
+                <button class="btn" onclick="slider2.prev()">이전 슬라이드</button>
+                <button class="btn" onclick="slider2.next()">다음 슬라이드</button>
+                <button class="btn" onclick="slider2.goTo(0)">첫 슬라이드로</button>
+            </div>
+
+            <div class="info">
+                <strong>설정:</strong>
+                <code>autoplay: false</code>,
+                <code>speed: 600ms</code>
+            </div>
+        </div>
+
+        <footer>
+            <p>Made with ❤️ by <a href="https://github.com/SiHyung-Lee" target="_blank">SiHyung-Lee</a></p>
+            <p style="margin-top: 1rem; opacity: 0.8;">
+                <a href="https://github.com/SiHyung-Lee/jquery-slide" target="_blank">GitHub Repository</a> |
+                <a href="../README.md">Documentation</a>
+            </p>
+        </footer>
+    </div>
+
+    <script type="module">
+        import Slider from '../src/slider.js';
+
+        // 데모 1: 자동 재생 슬라이더
+        const slider1 = new Slider('.js-slider-1', {
+            delay: 3000,
+            autoplay: true,
+            speed: 500,
+            infinite: true,
+            swipe: true
+        });
+
+        // 데모 2: 수동 제어 슬라이더
+        window.slider2 = new Slider('.js-slider-2', {
+            autoplay: false,
+            speed: 600,
+            infinite: true,
+            swipe: true
+        });
+
+        // 콘솔에 슬라이더 인스턴스 출력
+        console.log('Slider 1:', slider1);
+        console.log('Slider 2:', window.slider2);
+    </script>
+</body>
+</html>
