@@ -1,7 +1,7 @@
-# jQuery Slide
+# Vanilla Slide
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![npm version](https://badge.fury.io/js/jquery-slide.svg)](https://badge.fury.io/js/jquery-slide)
+[![npm version](https://badge.fury.io/js/vanilla-slide.svg)](https://badge.fury.io/js/vanilla-slide)
 
 무한 루프와 자동 재생 기능을 갖춘 모던 바닐라 JavaScript 캐러셀 슬라이더입니다.
 
@@ -26,19 +26,19 @@
 ### npm
 
 ```bash
-npm install jquery-slide
+npm install vanilla-slide
 ```
 
 ### CDN
 
 ```html
-<link rel="stylesheet" href="https://unpkg.com/jquery-slide/dist/jquery-slide.css">
-<script src="https://unpkg.com/jquery-slide/dist/jquery-slide.min.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/vanilla-slide/dist/vanilla-slide.css">
+<script src="https://unpkg.com/vanilla-slide/dist/vanilla-slide.min.js"></script>
 ```
 
 ### 수동 설치
 
-[릴리스 페이지](https://github.com/SiHyung-Lee/jquery-slide/releases)에서 최신 버전을 다운로드하세요.
+[릴리스 페이지](https://github.com/SiHyung-Lee/vanilla-slide/releases)에서 최신 버전을 다운로드하세요.
 
 ## 🚀 사용 방법
 
@@ -82,14 +82,14 @@ npm install jquery-slide
 #### CSS
 
 ```html
-<link rel="stylesheet" href="path/to/jquery-slide.css">
+<link rel="stylesheet" href="path/to/vanilla-slide.css">
 ```
 
 #### JavaScript
 
 ```javascript
 // ES6 모듈
-import Slider from 'jquery-slide';
+import Slider from 'vanilla-slide';
 
 const slider = new Slider('.js-slider', {
   delay: 5000,      // 자동 전환 간격 (밀리초)
@@ -102,7 +102,7 @@ const slider = new Slider('.js-slider', {
 
 ```javascript
 // UMD (브라우저)
-<script src="path/to/jquery-slide.min.js"></script>
+<script src="path/to/vanilla-slide.min.js"></script>
 <script>
   const slider = new Slider('.js-slider');
 </script>
@@ -222,7 +222,7 @@ npm run test:watch
 ## 📁 프로젝트 구조
 
 ```
-jquery-slide/
+vanilla-slide/
 ├── src/
 │   ├── index.js      # 메인 엔트리 포인트
 │   ├── slider.js     # 슬라이더 클래스
@@ -249,7 +249,7 @@ jquery-slide/
 ### v2.0.0 (2025)
 
 - 🎉 **주요 변경사항**
-  - jQuery 의존성 제거, 순수 바닐라 JavaScript로 재작성
+  - 순수 바닐라 JavaScript로 작성
   - ES6+ 모듈 시스템 적용
   - CSS transform/transition 사용으로 성능 개선
   - JSDoc 기반 타입 문서화
@@ -258,10 +258,6 @@ jquery-slide/
   - 접근성 개선 (ARIA 속성, 키보드 네비게이션)
   - 다크 모드 및 반응형 디자인 지원
   - prefers-reduced-motion 지원
-
-### v1.0.0
-
-- 초기 jQuery 기반 버전
 
 ## 🤝 기여
 
@@ -285,8 +281,8 @@ jquery-slide/
 
 ## 🙏 감사의 말
 
-이 프로젝트는 기존 jQuery 기반 슬라이더를 현대화하여 만들어졌습니다.
+이 프로젝트는 모던 웹 표준을 따르는 순수 바닐라 JavaScript 슬라이더입니다.
 
 ## 📮 문의
 
-질문이나 제안사항이 있으시면 [이슈](https://github.com/SiHyung-Lee/jquery-slide/issues)를 열어주세요.
+질문이나 제안사항이 있으시면 [이슈](https://github.com/SiHyung-Lee/vanilla-slide/issues)를 열어주세요.
