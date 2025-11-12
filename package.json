@@ -1,10 +1,10 @@
 {
-  "name": "jquery-slide",
+  "name": "vanilla-slide",
   "version": "2.0.0",
   "description": "A modern, lightweight vanilla JavaScript carousel slider with infinite loop and auto-play features",
-  "main": "dist/jquery-slide.js",
-  "module": "dist/jquery-slide.esm.js",
-  "types": "dist/jquery-slide.d.ts",
+  "main": "dist/vanilla-slide.js",
+  "module": "dist/vanilla-slide.esm.js",
+  "types": "dist/vanilla-slide.d.ts",
   "scripts": {
     "dev": "rollup -c -w",
     "build": "rollup -c && npm run build:public",
@@ -38,7 +38,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/SiHyung-Lee/jquery-slide.git"
+    "url": "https://github.com/SiHyung-Lee/vanilla-slide.git"
   },
   "files": [
     "dist",

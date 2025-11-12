@@ -8,7 +8,7 @@ export default [
   {
     input: 'src/index.js',
     output: {
-      file: 'dist/jquery-slide.js',
+      file: 'dist/vanilla-slide.js',
       format: 'umd',
       name: 'Slider',
       sourcemap: true,
@@ -30,7 +30,7 @@ export default [
   {
     input: 'src/index.js',
     output: {
-      file: 'dist/jquery-slide.esm.js',
+      file: 'dist/vanilla-slide.esm.js',
       format: 'es',
       sourcemap: true,
     },
@@ -51,7 +51,7 @@ export default [
   {
     input: 'src/index.js',
     output: {
-      file: 'dist/jquery-slide.min.js',
+      file: 'dist/vanilla-slide.min.js',
       format: 'umd',
       name: 'Slider',
       sourcemap: true,
